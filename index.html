@@ -5,10 +5,15 @@
 </head>
 <body>
     <h1>Todo List</h1>
-    <input type="text" id="taskInput" placeholder="Enter a task">
-    <button onclick="addTask()">Add Task</button>
+    <div>
+      <input type="text" id="titleInput" placeholder="Enter a title">
+      <input type="text" id="descriptionInput" placeholder="Enter a description">
+      <input type="date" id="dueDateInput">
+      <input type="text" id="priorityInput" placeholder="Enter a priority">
+      <button id="addTaskButton">Add Task</button>
+    </div>
     <ul id="taskList"></ul>
 
-    <script src="script.js"></script>
+    <script type="module" src="app.js"></script>
 </body>
 </html>
