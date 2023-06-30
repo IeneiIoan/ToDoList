@@ -5,7 +5,9 @@ export function renderTasks() {
   taskList.innerHTML = '';
 
   tasks.forEach((task, index) => {
-    const li = document.createElement('li');
+    const tr = document.createElement('tr');
+
+    const checkboxTd = document.createElement('td');
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.checked = task.completed;
@@ -17,36 +19,41 @@ export function renderTasks() {
       }
       renderTasks();
     });
+    checkboxTd.appendChild(checkbox);
 
+    const titleTd = document.createElement('td');
     const titleElement = document.createElement('h3');
     titleElement.textContent = task.title;
     if (task.completed) {
       titleElement.style.textDecoration = 'line-through';
     }
+    titleTd.appendChild(titleElement);
 
+    const descriptionTd = document.createElement('td');
     const descriptionElement = document.createElement('p');
-    descriptionElement.textContent = `Description: ${task.description}`;
+    descriptionElement.textContent = task.description;
+    descriptionTd.appendChild(descriptionElement);
 
+    const dueDateTd = document.createElement('td');
     const dueDateElement = document.createElement('p');
-    dueDateElement.textContent = `Due Date: ${task.dueDate}`;
+    dueDateElement.textContent = task.dueDate;
+    dueDateTd.appendChild(dueDateElement);
 
-    const priorityElement = document.createElement('p');
-    priorityElement.textContent = `Priority: ${task.priority}`;
-
+    const deleteTd = document.createElement('td');
     const deleteButton = document.createElement('button');
     deleteButton.textContent = 'Delete';
     deleteButton.addEventListener('click', () => {
       deleteTask(index);
       renderTasks();
     });
+    deleteTd.appendChild(deleteButton);
 
-    li.appendChild(checkbox);
-    li.appendChild(titleElement);
-    li.appendChild(descriptionElement);
-    li.appendChild(dueDateElement);
-    li.appendChild(priorityElement);
-    li.appendChild(deleteButton);
+    tr.appendChild(checkboxTd);
+    tr.appendChild(titleTd);
+    tr.appendChild(descriptionTd);
+    tr.appendChild(dueDateTd);
+    tr.appendChild(deleteTd);
 
-    taskList.appendChild(li);
+    taskList.appendChild(tr);
   });
 }

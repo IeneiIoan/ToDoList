@@ -6,20 +6,17 @@ function addTaskFromInput() {
   const titleInput = document.getElementById('titleInput');
   const descriptionInput = document.getElementById('descriptionInput');
   const dueDateInput = document.getElementById('dueDateInput');
-  const priorityInput = document.getElementById('priorityInput');
 
   const title = titleInput.value.trim();
   const description = descriptionInput.value.trim();
   const dueDate = dueDateInput.value;
-  const priority = priorityInput.value;
 
   if (title !== '') {
-    const task = createTask(title, description, dueDate, priority);
+    const task = createTask(title, description, dueDate);
     addTask(task);
     titleInput.value = '';
     descriptionInput.value = '';
     dueDateInput.value = '';
-    priorityInput.value = '';
     renderTasks();
   }
 }
